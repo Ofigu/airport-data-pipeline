@@ -4,3 +4,4 @@ requests
 papermill
 ipykernel
 pandas
+apache-airflow-providers-databricks>=6.0.0
