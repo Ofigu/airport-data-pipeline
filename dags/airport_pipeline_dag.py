@@ -33,3 +33,17 @@ with DAG(
         polling_period_seconds=30,
         timeout_seconds=600,
     )
+
+    silver_transformation = DatabricksSubmitRunOperator(
+        task_id='silver_transformation',
+        databricks_conn_id='databricks_default',  # Points to Airflow connection
+        existing_cluster_id=os.getenv('DATABRICKS_CLUSTER_ID'),
+        notebook_task={
+            'notebook_path': os.getenv('SILVER_PATH'),
+        },
+        polling_period_seconds=30,
+        timeout_seconds=600,
+    )
+
+
+bronze_ingestion >> silver_transformation
