@@ -1,0 +1,11 @@
+airport_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: databricks
+      catalog: airport_data
+      schema: gold
+      host: dbc-ea53ec78-db01.cloud.databricks.com
+      http_path: /sql/1.0/warehouses/2527097792635603
+      token: "{{ env_var('DATABRICKS_DBT_ACCESS_KEY') }}"
+      threads: 4
