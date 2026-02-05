@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: silver
+    description: "cleaned flights data from silver layer"
+    database: airport_project
+    schema: flights_silver
+    tables:
+      - name: flights_clean
+        description: "cleaned flights data"
+        columns:
+          - name: "arrival_departure"
+            description: "Arrival or departure"
+          - name: "flight_number"
+            description: "Flight number"
+          - name: "airline_code"
+            description: "Airline code"
+          - name: "flight_date"
+            description: "Date of the flight"
+          - name: "airline_name"
+            description: "Airline name"
+          - name: "scheduled_landing_time"
+            description: "Scheduled landing time"
+          - name: "actual_landing_time"
+            description: "Actual landing time"
+          - name: "status_en"
+            description: "Flight status in English"

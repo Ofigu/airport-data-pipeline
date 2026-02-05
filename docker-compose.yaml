@@ -81,6 +81,7 @@ x-airflow-common:
     - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
     - ${AIRFLOW_PROJ_DIR:-.}/bronze_flights_api.ipynb:/opt/airflow/bronze_flights_api.ipynb
     - ${AIRFLOW_PROJ_DIR:-.}/spark-warehouse:/opt/airflow/spark-warehouse
+    - ${AIRFLOW_PROJ_DIR:-.}/airport_dbt:/opt/airflow/airport_dbt
 
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:

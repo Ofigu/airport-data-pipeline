@@ -1,5 +1,6 @@
 from airflow import DAG
 from airflow.providers.databricks.operators.databricks import DatabricksSubmitRunOperator
+from airflow.providers.standard.operators.bash import BashOperator
 from datetime import datetime, timedelta
 import os
 
@@ -45,5 +46,19 @@ with DAG(
         timeout_seconds=600,
     )
 
+    gold_modeling = BashOperator(
+        task_id='gold_modeling',
+        bash_command="""
+        set -e  # Exit on any error
+        cd /opt/airflow/airport_dbt
+        /home/airflow/.local/bin/dbt run --profiles-dir /opt/airflow/config
+        /home/airflow/.local/bin/dbt test --profiles-dir /opt/airflow/config
+        """,
+        env={
+            **os.environ,  # Pass all environment variables
+            'DATABRICKS_DBT_ACCESS_KEY': '{{ var.value.DATABRICKS_DBT_ACCESS_KEY }}',  # Use Airflow variable
+        },
+    )
 
-bronze_ingestion >> silver_transformation
+
+bronze_ingestion >> silver_transformation >> gold_modeling

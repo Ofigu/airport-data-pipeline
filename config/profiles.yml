@@ -1,7 +1,7 @@
 airport_dbt:
-  target: dev
+  target: prod
   outputs:
-    dev:
+    prod:
       type: databricks
       catalog: airport_project
       schema: flights_gold

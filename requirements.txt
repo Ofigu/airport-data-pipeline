@@ -5,5 +5,5 @@ papermill
 ipykernel
 pandas
 apache-airflow-providers-databricks>=6.0.0
-dbt-core==1.7.0
-dbt-databricks==1.7.0
+dbt-core>=1.8.0
+dbt-databricks>=1.8.0

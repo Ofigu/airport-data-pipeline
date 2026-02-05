@@ -18,3 +18,6 @@ USER airflow
 # Copy and install your Python dependencies
 COPY requirements.txt /
 RUN pip install --no-cache-dir -r /requirements.txt
+
+# Add local bin to PATH for dbt installation
+ENV PATH="/home/airflow/.local/bin:${PATH}"
