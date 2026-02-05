@@ -13,9 +13,9 @@ default_args = {
 
 with DAG(
     dag_id='airport_pipeline',
-    description='Airport data pipeline - Bronze layer ingestion',
-    schedule='@daily', 
-    catchup=True, #run backfill for past dates
+    description='Airport data pipeline',
+    schedule='none', #only manual trigger
+    #catchup=True, #run backfill for past dates
     default_args=default_args,
     tags=['airport', 'flights', 'bronze'],
 ) as dag:
