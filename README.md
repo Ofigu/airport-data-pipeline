@@ -21,6 +21,12 @@ This pipeline ingests, transforms, and models approximately **3000 daily flights
 
 ## Architecture
 
+### Airflow DAG Visualization
+
+![Airflow DAG](./docs/airflow_dag_graph.png)
+
+*The DAG orchestrates three main tasks: Bronze ingestion → Silver transformation → Gold modeling*
+
 ### Data Flow
 
 ```
